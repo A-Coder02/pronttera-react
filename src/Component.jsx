@@ -1,7 +1,7 @@
 import React from "react";
 
 const Component = ({name, skillSet}) => {
-  // const name = 'Mahek'
+  const name = 'Mahek'
   return (
     <div style={{
         padding : "1rem",
