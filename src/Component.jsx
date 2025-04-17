@@ -1,6 +1,6 @@
 import React from "react";
 
-const Component = ({name, skills}) => {
+const Component = ({name, skillSet}) => {
   // const name = 'Mahek'
   return (
     <div style={{
@@ -8,8 +8,8 @@ const Component = ({name, skills}) => {
         marginBottom : '1rem'
       }}>
       <h3 >Hello {name}!</h3>
-      <h4>Skills</h4>
-      <ul>{skills.map(function(skill, index){
+      <h4>Skill Set</h4>
+      <ul>{skillSet.map(function(skill, index){
         return <li key={index} >{skill}</li>
       })}</ul>
     </div>
