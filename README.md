@@ -3,7 +3,7 @@ Components
 Props
 Map fn with JSX
 Styles in JSX
-React Fragmnet
-
 JSX vs JS?
+
+React Fragmnet
 Key in React
