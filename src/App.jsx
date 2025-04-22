@@ -1,15 +1,12 @@
-import React from 'react'
-import Component from './Component';
-import Button from './Button';
+import React from "react";
+import Learning from "./Learning";
 const App = () => {
-  return <div>
-    <p>React + Vite Application</p>
-    <Component name="Heena" skills={["HTML", "CSS", "JS"]} />
-    <Component name="Faizan" skills={["HTML", "CSS", "JS", "C", "React Js"]} />
-    <Component name="Mahek" skills={["HTML", "CSS", "JS", "C++", "Node Js"]} />
-    <Button></Button>
-    <Button></Button>
-  </div>
-}
+  return (
+    <div>
+      <p className="text-blue-500">React + Vite Application</p>
+      <Learning />
+    </div>
+  );
+};
 
 export default App;
