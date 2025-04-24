@@ -7,3 +7,6 @@ JSX vs JS?
 
 React Fragmnet
 Key in React
+
+Doubts
+&& and ||

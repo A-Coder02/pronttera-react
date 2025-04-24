@@ -1,13 +1,10 @@
 import React from "react";
 
-const ClearAllButton = () => {
-  function onClick() {
-    alert("Clear All Clicked!");
-  }
+const ClearAllButton = (props) => {
   return (
     <div>
       <button
-        onClick={onClick}
+        onClick={props.onClick}
         className="text-red-500 text-sm cursor-pointer block ml-auto"
       >
         Clear All

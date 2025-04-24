@@ -2,22 +2,26 @@ import React, { useState } from "react";
 import { BiPlus } from "react-icons/bi";
 
 const InputWithButton = (props) => {
-  // value, onChange, onClick
-  const [inputValue, setInputValue] = useState("Hello");
-  function inputHandler(e) {
-    console.log(e.target.value);
-    setInputValue(e.target.value);
-  }
+  const { placeholder, inputValue, inputHandler, onSubmit } = props;
 
   function onClickButton() {
-    alert(inputValue);
+    onSubmit();
   }
   // Events
   return (
     <div className="input-wrapper border border-gray-500 rounded-xl flex overflow-hidden">
       <input
+        placeholder={placeholder}
         value={inputValue}
-        onChange={inputHandler}
+        // onChange={inputHandler}
+        onKeyDown={(e) => {
+          console.log(e.target.value);
+          if (e.key === "Enter") {
+            onSubmit();
+          } else {
+            inputHandler(e);
+          }
+        }}
         type="text"
         className="flex-1 p-2"
       />
