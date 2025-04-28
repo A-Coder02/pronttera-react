@@ -7,3 +7,5 @@ JSX vs JS?
 
 React Fragmnet
 Key in React
+
+LocalStorage, SessionStorage and Cookies
