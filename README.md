@@ -1,9 +1,7 @@
-React File Structure
-Components
-Props
-Map fn with JSX
-Styles in JSX
-JSX vs JS?
+Context API (React Hooks)
 
-React Fragmnet
-Key in React
+Libraries:
+Redux, Redux Js Toolkit
+
+How our state cache and works
+Export and multiple exports

@@ -1,15 +1,31 @@
-import React from 'react'
-import Component from './Component';
-import Button from './Button';
+import React from "react";
+import Component from "./Component";
+import Button from "./Button";
+import ComponentA from "./components/ComponentA";
+import { MessageContextProvider } from "./context/MessageContextOld";
+import CompA from "./components/CompA";
+import { greetContext, GreetContextProvider } from "./context/GreetContext";
+
+console.log({ greetContext });
+
 const App = () => {
-  return <div>
-    <p>React + Vite Application</p>
-    <Component name="Heena" skills={["HTML", "CSS", "JS"]} />
-    <Component name="Faizan" skills={["HTML", "CSS", "JS", "C", "React Js"]} />
-    <Component name="Mahek" skills={["HTML", "CSS", "JS", "C++", "Node Js"]} />
-    <Button></Button>
-    <Button></Button>
-  </div>
-}
+  const message = "Hello React Devs!";
+  return (
+    <GreetContextProvider>
+      <div
+        style={{
+          padding: "3rem",
+        }}
+      >
+        <p>React + Vite Application</p>
+        <CompA />
+      </div>
+    </GreetContextProvider>
+  );
+};
 
 export default App;
+
+// ComponentA message
+// ComponentB via props
+// ComponentC via props
