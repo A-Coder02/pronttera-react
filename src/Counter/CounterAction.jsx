@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { CounterContext } from "../context/CounterContext";
-import Button from "./components/Button";
 
 const CounterAction = () => {
   const { count, setCount } = useContext(CounterContext);
@@ -13,8 +12,12 @@ const CounterAction = () => {
       >
         Decrement
       </button>
-
-      <Button onClick={() => setCount(count + 1)}>Increment</Button>
+      <button
+        onClick={() => setCount(count + 1)}
+        className="bg-white cursor-pointer text-black py-2 px-4 rounded-full hover:bg-gray-200 transition"
+      >
+        Increment
+      </button>
     </div>
   );
 };
