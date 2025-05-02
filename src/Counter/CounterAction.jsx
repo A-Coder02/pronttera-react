@@ -23,11 +23,3 @@ const CounterAction = () => {
 };
 
 export default CounterAction;
-
-// setCount function or value
-const value = null;
-setCount(value);
-
-const foo = function (previousValue) {
-  return previousValue + 9;
-};
