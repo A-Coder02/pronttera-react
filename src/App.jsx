@@ -28,7 +28,7 @@ const App = () => {
   ]);
 
   return (
-    <div>
+    <div className="max-w-[1900px] mx-auto">
       <RouterProvider router={router} />
     </div>
   );
