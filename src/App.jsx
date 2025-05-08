@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import SearchInput from "./components/SearchInput";
 import PokemonList from "./components/PokemonList";
 import PokemonViewer from "./components/PokemonViewer";
+import PokemonService from "./services/pokemon.service";
 
 // Pokemon
 // State, list, Card
@@ -42,28 +43,14 @@ const App = () => {
 
   async function fetchPokemonList() {
     setIsLoading(true);
-    console.log("Fetching data...");
-    const response = await fetch(
-      "https://pokeapi.co/api/v2/pokemon?limit=100000"
-    );
-    console.log(response);
-    const data = await response.json();
-    const { results } = data;
+    const results = await PokemonService.getList();
     setPokemonList(results);
     setIsLoading(false);
   }
 
   async function fetchPokemonData(pokemonName) {
     setIsLoadingPokemon(true);
-    const response = await fetch(
-      "https://pokeapi.co/api/v2/pokemon/" + pokemonName
-    );
-    const data = await response.json();
-    const pokemonData = {
-      name: data.name,
-      img_url: data.sprites.front_default,
-    };
-    console.log({ pokemonData });
+    const pokemonData = await PokemonService.getSingle(pokemonName);
     setSelectedPokemon(pokemonData);
     setIsLoadingPokemon(false);
   }
