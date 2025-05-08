@@ -1,9 +1,11 @@
-React File Structure
-Components
-Props
-Map fn with JSX
-Styles in JSX
-JSX vs JS?
+File Structure
+assets /images
+/components
+-/file-ui
+-/layout-ui
+-/page-components
+-/pages
 
-React Fragmnet
-Key in React
+/utils
+
+libs: react-router-dom, tailwindcss, ✔
