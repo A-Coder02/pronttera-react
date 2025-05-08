@@ -1,15 +1,37 @@
-import React from 'react'
-import Component from './Component';
-import Button from './Button';
+import React from "react";
+
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./pages/Home";
+import AboutUs from "./pages/AboutUs";
+import Portfolio from "./pages/Portfolio";
+import Contact from "./pages/Contact";
+
 const App = () => {
-  return <div>
-    <p>React + Vite Application</p>
-    <Component name="Heena" skills={["HTML", "CSS", "JS"]} />
-    <Component name="Faizan" skills={["HTML", "CSS", "JS", "C", "React Js"]} />
-    <Component name="Mahek" skills={["HTML", "CSS", "JS", "C++", "Node Js"]} />
-    <Button></Button>
-    <Button></Button>
-  </div>
-}
+  // todo: Add Not Found Page
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />,
+    },
+    {
+      path: "/about-us",
+      element: <AboutUs />,
+    },
+    {
+      path: "/portfolio",
+      element: <Portfolio />,
+    },
+    {
+      path: "/contact-us",
+      element: <Contact />,
+    },
+  ]);
+
+  return (
+    <div>
+      <RouterProvider router={router} />
+    </div>
+  );
+};
 
 export default App;
