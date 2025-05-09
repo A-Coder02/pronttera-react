@@ -23,7 +23,7 @@ const Header = () => {
     : "hidden";
 
   return (
-    <header className="flex justify-between px-12 py-6 ">
+    <header className="flex justify-between px-12 py-6 sticky top-0 bg-white">
       <div className="brand font-semibold text-lg">Logo</div>
       <nav>
         <ul className={`${navlistClassName} hidden md:flex gap-12 `}>

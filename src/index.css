@@ -7,7 +7,7 @@ body {
 }
 
 section {
-  @apply px-11;
+  @apply px-7 md:px-24;
   @apply mb-12;
   @apply min-h-[34rem];
 }
