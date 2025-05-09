@@ -5,7 +5,9 @@ body {
   font-family: "Epilogue";
   color: #2d2d2d;
 }
-
+* {
+  outline: none;
+}
 section {
   @apply px-7 md:px-24;
   @apply mb-12;

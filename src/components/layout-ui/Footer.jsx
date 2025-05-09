@@ -5,9 +5,9 @@ import FacebookSvg from "../../assets/images/facebook.svg";
 
 const Footer = () => {
   return (
-    <section>
-      <footer className="flex flex-col md:flex-row gap-20 justify-between border-t border-t-black pt-16">
-        <div className="max-w-[22.5rem]">
+    <footer className="px-14">
+      <div className=" flex flex-col md:flex-row gap-20 md:gap-[15rem] justify-between border-t border-t-black pt-16">
+        <div className="">
           <h2 className="font-semibold text-3xl mb-10">Let’s work together</h2>
           <p className="mb-14">
             This is a template Figma file, turned into code using Anima. Learn
@@ -19,8 +19,8 @@ const Footer = () => {
             <img src={FacebookSvg} className="w-9 h-9 cursor-pointer" alt="" />
           </div>
         </div>
-        <div className="max-w-[530px]">
-          <form className="flex flex-col gap-5 ">
+        <form className="flex flex-1 items-start min-w-[32rem]">
+          <div className="flex flex-1 flex-col gap-5 ">
             <input
               type="text"
               placeholder="Name"
@@ -40,14 +40,14 @@ const Footer = () => {
             ></textarea>
             <button
               type="submit"
-              className="self-start p-6 w-96 self-start bg-black text-white cursor-pointer"
+              className="font-semibold p-6 min-w-[13rem] self-start bg-black text-white cursor-pointer"
             >
               Submit
             </button>
-          </form>
-        </div>
-      </footer>
-    </section>
+          </div>
+        </form>
+      </div>
+    </footer>
   );
 };
 
