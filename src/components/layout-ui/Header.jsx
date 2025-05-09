@@ -22,6 +22,10 @@ const Header = () => {
     `
     : "hidden";
 
+  // xs: (Mobile), sm: (Table), md: (Laptop), lg: (Huge screens)
+
+  //  block                   md:hidden
+
   return (
     <header className="flex justify-between px-12 py-6 sticky top-0 bg-white">
       <div className="brand font-semibold text-lg">Logo</div>
