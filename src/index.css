@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+button {
+  @apply p-2 bg-amber-950 text-white m-4 cursor-pointer rounded-3xl;
+}
