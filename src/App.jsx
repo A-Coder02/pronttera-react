@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import CustomInput from "./CustomInput";
 
 const App = () => {
   const [counter, setCounter] = useState(0);
@@ -11,22 +12,28 @@ const App = () => {
 
   // let inputElt = null;
   const inputElt = useRef(null);
+  const anotherInputElt = useRef(null);
 
   // console.log({ inputEltCurrent: inputElt });
 
+  function doSomething(domElt) {
+    if (!domElt) return null;
+    const randomValue = Math.round(Math.random() * 10);
+    const isEven = randomValue % 2 === 0;
+
+    if (isEven) domElt.style.backgroundColor = "tomato";
+    else domElt.style.backgroundColor = "royalblue";
+
+    domElt.value = randomValue;
+  }
+
   return (
     <div className="p-4">
-      <input
-        ref={inputElt}
-        id="input-field"
-        type="text"
-        placeholder="Enter Anything..."
-        className="block w-full p-2 bg-amber-50 rounded-2xl"
-      />
+      <CustomInput ref={inputElt} />
+      <CustomInput ref={anotherInputElt} />
       <button
         onClick={() => {
           inputElt.current.focus();
-          // inputElt.current.value = "Heena and Mahek";
         }}
       >
         Focus on Input
@@ -40,6 +47,16 @@ const App = () => {
         Blur on Input
       </button>
 
+      <button
+        onClick={() => {
+          // inputElt.current.greet();
+          inputElt.current.doSomething();
+          // doSomething(inputElt.current);
+          // doSomething(anotherInputElt.current);
+        }}
+      >
+        Click ME,I'm Something...
+      </button>
       {/* <button
         onClick={() => {
           setCounter(counter + 1);
