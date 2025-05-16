@@ -4,6 +4,7 @@ import SearchInput from "./components/SearchInput";
 import PokemonList from "./components/PokemonList";
 import PokemonViewer from "./components/PokemonViewer";
 import usePokeHook from "./hooks/usePokeHook";
+import useArithmaticHook from "./hooks/useArithmaticHook";
 
 const App = () => {
   const {
@@ -18,6 +19,10 @@ const App = () => {
     onClickPokemonCard,
     removePokemon,
   } = usePokeHook();
+
+  const { add, sub } = useArithmaticHook();
+  console.log(add(4, 4));
+  console.log(sub(6, 4));
   return (
     <div className="h-screen flex flex-col">
       <div className="bg-slate-200 ">

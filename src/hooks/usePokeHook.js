@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import PokemonService from "../services/pokemon.service";
 
 const usePokeHook = () => {
@@ -10,43 +10,49 @@ const usePokeHook = () => {
 
   const [search, setSearch] = useState("");
 
-  let filteredPokemonList = pokemonList;
+  const filteredPokemonList = useMemo(() => {
+    let list = pokemonList;
+    if (search.length > 0) {
+      list = pokemonList.filter((p) => {
+        const str = p.name.toLowerCase();
+        const searchValue = search.toLowerCase();
 
-  if (search.length > 0) {
-    filteredPokemonList = pokemonList.filter((p) => {
-      const str = p.name.toLowerCase();
-      const searchValue = search.toLowerCase();
+        return str.includes(searchValue);
+      });
+    }
 
-      return str.includes(searchValue);
-    });
-  }
+    return list;
+  }, [search, pokemonList]);
 
   // Handlers & Functions
-  const selectPokemonHandler = (data) => {
+  const selectPokemonHandler = useCallback((data) => {
     fetchPokemonData(data.name);
-  };
+  }, []);
 
-  const removeSelectedPokemonHandler = () => {
+  const removeSelectedPokemonHandler = useCallback(() => {
     setSelectedPokemon(null);
-  };
+  }, []);
 
-  const searchHandler = (e) => {
-    setSearch(e.target.value);
-  };
+  const searchHandler = useCallback(
+    (e) => {
+      setSearch(e.target.value);
+    },
+    [search]
+  );
 
-  async function fetchPokemonList() {
+  const fetchPokemonList = useCallback(async () => {
     setIsLoading(true);
     const results = await PokemonService.getList();
     setPokemonList(results);
     setIsLoading(false);
-  }
+  }, []);
 
-  async function fetchPokemonData(pokemonName) {
+  const fetchPokemonData = useCallback(async (pokemonName) => {
     setIsLoadingPokemon(true);
     const pokemonData = await PokemonService.getSingle(pokemonName);
     setSelectedPokemon(pokemonData);
     setIsLoadingPokemon(false);
-  }
+  }, []);
 
   useEffect(() => {
     fetchPokemonList();
