@@ -1,73 +1,30 @@
 import React, { useEffect, useState } from "react";
+// Components
 import SearchInput from "./components/SearchInput";
 import PokemonList from "./components/PokemonList";
 import PokemonViewer from "./components/PokemonViewer";
-import PokemonService from "./services/pokemon.service";
+import usePokeHook from "./hooks/usePokeHook";
 
-// Pokemon
-// State, list, Card
-// UI: Searchbar, Card list, SingleCard UI - done
-// fetch pokemon list
 const App = () => {
-  // States
-  const [pokemonList, setPokemonList] = useState([]);
-  const [selectedPokemon, setSelectedPokemon] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isLoadingPokemon, setIsLoadingPokemon] = useState(false);
-
-  const [search, setSearch] = useState("");
-
-  let filteredPokemonList = pokemonList;
-
-  if (search.length > 0) {
-    filteredPokemonList = pokemonList.filter((p) => {
-      const str = p.name.toLowerCase();
-      const searchValue = search.toLowerCase();
-
-      return str.includes(searchValue);
-    });
-  }
-
-  // Handlers & Functions
-  const selectPokemonHandler = (data) => {
-    fetchPokemonData(data.name);
-  };
-
-  const removeSelectedPokemonHandler = () => {
-    setSelectedPokemon(null);
-  };
-
-  const searchHandler = (e) => {
-    setSearch(e.target.value);
-  };
-
-  async function fetchPokemonList() {
-    setIsLoading(true);
-    const results = await PokemonService.getList();
-    setPokemonList(results);
-    setIsLoading(false);
-  }
-
-  async function fetchPokemonData(pokemonName) {
-    setIsLoadingPokemon(true);
-    const pokemonData = await PokemonService.getSingle(pokemonName);
-    setSelectedPokemon(pokemonData);
-    setIsLoadingPokemon(false);
-  }
-
-  console.log({ pokemonList });
-
-  useEffect(() => {
-    fetchPokemonList();
-  }, []);
-
+  const {
+    // states
+    search,
+    isLoading,
+    list,
+    isLoadingPokemon,
+    selectedPokemon,
+    // functions and handlers
+    onSearch,
+    onClickPokemonCard,
+    removePokemon,
+  } = usePokeHook();
   return (
     <div className="h-screen flex flex-col">
       <div className="bg-slate-200 ">
         <div className="py-4 bg-amber-300">
           <h1 className="text-4xl text-center text-amber-950">Pokemon List</h1>
         </div>
-        <SearchInput value={search} onChange={searchHandler} />
+        <SearchInput value={search} onChange={onSearch} />
       </div>
       <div className="flex-1 flex gap-4 bg-slate-200 p-4 overflow-auto ">
         {isLoading ? (
@@ -76,13 +33,13 @@ const App = () => {
           <>
             <PokemonList
               isLoading={isLoading}
-              list={filteredPokemonList}
-              onClickCard={selectPokemonHandler}
+              list={list}
+              onClickCard={onClickPokemonCard}
             />
             <PokemonViewer
               isLoading={isLoadingPokemon}
               pokemon={selectedPokemon}
-              onRemove={removeSelectedPokemonHandler}
+              onRemove={removePokemon}
             />
           </>
         )}
