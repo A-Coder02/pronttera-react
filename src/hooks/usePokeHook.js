@@ -33,12 +33,9 @@ const usePokeHook = () => {
     setSelectedPokemon(null);
   }, []);
 
-  const searchHandler = useCallback(
-    (e) => {
-      setSearch(e.target.value);
-    },
-    [search]
-  );
+  const searchHandler = useCallback((e) => {
+    setSearch(e.target.value);
+  }, []);
 
   const fetchPokemonList = useCallback(async () => {
     setIsLoading(true);
