@@ -1,15 +1,20 @@
-import React from 'react'
-import Component from './Component';
-import Button from './Button';
+import { useState } from "react";
+import CalculatedValue from "./CalculatedValue";
+
 const App = () => {
-  return <div>
-    <p>React + Vite Application</p>
-    <Component name="Heena" skills={["HTML", "CSS", "JS"]} />
-    <Component name="Faizan" skills={["HTML", "CSS", "JS", "C", "React Js"]} />
-    <Component name="Mahek" skills={["HTML", "CSS", "JS", "C++", "Node Js"]} />
-    <Button></Button>
-    <Button></Button>
-  </div>
-}
+  const [value, setValue] = useState(0);
+  return (
+    <div className="p-8">
+      <input
+        type="text"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        className="my-6"
+      />
+      <CalculatedValue value={value} />
+      <p>React + Vite Application</p>
+    </div>
+  );
+};
 
 export default App;
