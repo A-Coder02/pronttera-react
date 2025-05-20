@@ -4,9 +4,12 @@ import {
   RouterProvider,
   useNavigate,
 } from "react-router-dom";
-import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
-import NotFound from "./pages/NotFound";
+// import Login from "./pages/Login";
+// import Dashboard from "./pages/Dashboard";
+// import NotFound from "./pages/NotFound";
+const Login = React.lazy(() => import("./pages/Login"));
+const Dashboard = React.lazy(() => import("./pages/Dashboard"));
+const NotFound = React.lazy(() => import("./pages/NotFound"));
 
 // Router setup
 // useNavigate for navigations
